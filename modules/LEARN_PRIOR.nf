@@ -18,6 +18,6 @@ process LEARN_PRIOR {
     --mode ${params.bdg_mode} \
     --cores ${params.bdg_cores} \
     --iter ${params.bdg_iter} \
-    --save "${prior.baseName}_${eset.baseName}" \
+    --save "${prior.baseName}_${eset.baseName}"
     """
 }

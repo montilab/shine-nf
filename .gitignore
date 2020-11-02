@@ -1,3 +1,10 @@
+data-raw/
+results/
+
+# Sublime
+*.sublime-project
+
+# Nextflow
 .idea/**
 .gradle/**
 .*.log*

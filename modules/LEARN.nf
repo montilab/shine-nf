@@ -17,6 +17,6 @@ process LEARN {
     --mode ${params.bdg_mode} \
     --cores ${params.bdg_cores} \
     --iter ${params.bdg_iter} \
-    --save ${eset.baseName} \
+    --save ${eset.baseName}
     """
 }

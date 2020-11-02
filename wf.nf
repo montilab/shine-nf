@@ -3,10 +3,8 @@ VERSION="1.0"
 nextflow.enable.dsl=2
 
 // Workflow parameters
-params.dir = null
-params.data  = null
-params.outdir = "/results"
-params.email = ""
+params.indir  = "/Users/anthonyfederico/GitHub/shine-nf/data"
+params.outdir = "/Users/anthonyfederico/GitHub/shine-nf/results"
 
 // Learning parameters
 params.bdg_mode = "bdgraph.mpl"
@@ -16,13 +14,12 @@ params.bdg_cores = 1
 params.bdg_iter = 5000
 
 println()
-
 params.help = ""
 if (params.help) {
   log.info " "
   log.info "USAGE: "
   log.info " "
-  log.info "nextflow run workflow.nf -c workflow.config -profile {profile}"
+  log.info "nextflow run nf.nf -c configs/profiles.config -profile {profile}"
   log.info " "
   exit 1
 }
@@ -32,7 +29,7 @@ W O R K F L O W ~ Configuration
 ===============================
 Profile            : ${workflow.profile}
 Project Path       : ${workflow.projectDir}
-Input Data         : ${params.data}
+Input Directory    : ${params.indir}
 Output Directory   : ${params.outdir}
 -------------------------------
 
@@ -51,10 +48,10 @@ include { LEARN } from './modules/LEARN'
 include { LEARN_PRIOR } from './modules/LEARN_PRIOR'
 include { RECONSTRUCT } from './modules/RECONSTRUCT'
 
-workflow ROOT {
+workflow ABC {
     main:
-      eset = "/data/eset.rds"
-      modules = "/data/modules.rds"
+      eset = "${params.indir}/esets/ABC.rds"
+      modules = "${params.indir}/modules.rds"
       SPLIT( eset, modules )
       LEARN( SPLIT.out.flatten() )
       RECONSTRUCT( eset, LEARN.out[0].collect() )
@@ -65,8 +62,9 @@ workflow AB {
     take: 
       prior
     main:
-      eset = "/data/eset_AB.rds"
+      eset = "${params.indir}/esets/AB.rds"
       LEARN_PRIOR( eset, prior )
+      RECONSTRUCT( eset, LEARN_PRIOR.out[0].collect() )
     emit:
       LEARN_PRIOR.out[0]
 }
@@ -74,19 +72,21 @@ workflow A {
     take: 
       prior
     main:
-      eset = "/data/eset_A.rds"
+      eset = "${params.indir}/esets/A.rds"
       LEARN_PRIOR( eset, prior )
+      RECONSTRUCT( eset, LEARN_PRIOR.out[0].collect() )
 }
 workflow B {
     take: 
       prior
     main:
-      eset = "/data/eset_B.rds"
+      eset = "${params.indir}/esets/B.rds"
       LEARN_PRIOR( eset, prior )
+      RECONSTRUCT( eset, LEARN_PRIOR.out[0].collect() )
 }
 workflow {
-    ROOT()
-    AB( ROOT.out )
-    A( AB.out)
-    B( AB.out)
+    ABC()
+    AB(ABC.out)
+    A(AB.out)
+    B(AB.out)
 }
