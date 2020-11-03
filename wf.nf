@@ -19,7 +19,7 @@ if (params.help) {
   log.info " "
   log.info "USAGE: "
   log.info " "
-  log.info "nextflow run nf.nf -c configs/profiles.config -profile {profile}"
+  log.info "nextflow run wf.nf -c configs/profiles.config -profile {profile}"
   log.info " "
   exit 1
 }

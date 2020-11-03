@@ -1,0 +1,5 @@
+process,module,params
+    -> ABC,LEARN,eset=data/esets/ABC.rds|mods=data/modules.rds
+ABC -> AB,LEARN_PRIOR,eset=data/esets/AB.rds
+AB  -> A,LEARN_PRIOR,eset=data/esets/A.rds
+AB  -> B,LEARN_PRIOR,eset=data/esets/B.rds

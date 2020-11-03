@@ -3,6 +3,7 @@ results/
 
 # Sublime
 *.sublime-project
+*.sublime-workspace
 
 # Nextflow
 .idea/**
