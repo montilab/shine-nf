@@ -40,7 +40,7 @@ BDG Uniform Prior  : ${params.bdg_uprior}
 BDG Cut            : ${params.bdg_cut}
 BDG Cores          : ${params.bdg_cores}
 BDG Iter           : ${params.bdg_iter}
--------------------------------
+-------------------------------\n
 """
 
 include { SPLIT } from './modules/SPLIT'
@@ -84,9 +84,18 @@ workflow B {
       LEARN_PRIOR( eset, prior )
       RECONSTRUCT( eset, LEARN_PRIOR.out[0].collect() )
 }
+workflow C {
+    take: 
+      prior
+    main:
+      eset = "${params.indir}/esets/C.rds"
+      LEARN_PRIOR( eset, prior )
+      RECONSTRUCT( eset, LEARN_PRIOR.out[0].collect() )
+}
 workflow {
     ABC()
     AB(ABC.out)
     A(AB.out)
     B(AB.out)
+    C(ABC.out)
 }
