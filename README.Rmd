@@ -1,5 +1,5 @@
 ---
-title: "shiny-nf"
+title: "shine-nf"
 output:
   github_document:
     toc: true
@@ -21,7 +21,7 @@ This is a collection of Nextflow modules (DSL2) for modeling hierarchical biolog
 
 # Quick Start
 
-In genomics data often has a hierarchical structure, image we want to learn networks within a hierarchical structure. For example, ABC needs to be learned first before AB. Once AB is finished, A and B can be computed in parallel etc. If we needed to do this repetitively for the same data and structure, we might define a workflow. But what if we want to apply the same method to a dataset with a different structure? We would want make defining these workflows to highly efficient.
+In genomics data often has a hierarchical structure, image we want to learn networks within a hierarchical structure. For example, ABC needs to be learned first before AB. Once AB is finished, A and B can be computed in parallel etc. If we needed to do this repetitively for the same data and structure, we might define a workflow. But what if we want to apply the same method to a dataset with a different structure? We would want to make defining these workflows to highly efficient.
 
 ```
     ABC
@@ -276,7 +276,7 @@ for node in gnf.traverse_tree(tree):
     print(module(**node.kwargs))
 ```
 
-# Alternative Dependency Installation
+# Alternative Dependency Options
 
 **R Packages**  
 We suggest R >= 3.6.0 and workflows will expect the following R dependencies to be available.
@@ -289,7 +289,7 @@ library(magrittr)
 library(optparse)
 ```
 
-**Anaconda**  
+**Conda**  
 You can alternatively run workflows with a conda environment activated.
 
 ```

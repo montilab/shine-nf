@@ -1,4 +1,4 @@
-shiny-nf
+shine-nf
 ================
 
   - [Quick Start](#quick-start)
@@ -8,8 +8,7 @@ shiny-nf
         Networks](#multiple-unconstrained-networks)
       - [Multiple Constrained Networks](#multiple-constrained-networks)
   - [Generative Nextflow](#generative-nextflow)
-  - [Alternative Dependency
-    Installation](#alternative-dependency-installation)
+  - [Alternative Dependency Options](#alternative-dependency-options)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -39,7 +38,7 @@ to be learned first before AB. Once AB is finished, A and B can be
 computed in parallel etc. If we needed to do this repetitively for the
 same data and structure, we might define a workflow. But what if we want
 to apply the same method to a dataset with a different structure? We
-would want make defining these workflows to highly efficient.
+would want to make defining these workflows to highly efficient.
 
 ``` 
     ABC
@@ -330,7 +329,7 @@ for node in gnf.traverse_tree(tree):
     print(module(**node.kwargs))
 ```
 
-# Alternative Dependency Installation
+# Alternative Dependency Options
 
 **R Packages**  
 We suggest R \>= 3.6.0 and workflows will expect the following R
@@ -344,7 +343,7 @@ library(magrittr)
 library(optparse)
 ```
 
-**Anaconda**  
+**Conda**  
 You can alternatively run workflows with a conda environment activated.
 
     conda create -n shine python=3.7
