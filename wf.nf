@@ -10,7 +10,6 @@ params.outdir = "/Users/anthonyfederico/GitHub/shine-nf/results"
 params.bdg_mode = "bdgraph.mpl"
 params.bdg_uprior = 0.5
 params.bdg_cut = 0.9
-params.bdg_cores = 1
 params.bdg_iter = 5000
 
 println()
@@ -38,7 +37,6 @@ Learning parameters
 BDG Mode           : ${params.bdg_mode}
 BDG Uniform Prior  : ${params.bdg_uprior}
 BDG Cut            : ${params.bdg_cut}
-BDG Cores          : ${params.bdg_cores}
 BDG Iter           : ${params.bdg_iter}
 -------------------------------\n
 """

@@ -15,7 +15,7 @@ process LEARN {
     --eset $eset \
     --uprior ${params.bdg_uprior} \
     --mode ${params.bdg_mode} \
-    --cores ${params.bdg_cores} \
+    --cores ${task.cpus} \
     --iter ${params.bdg_iter} \
     --save ${eset.baseName}
     """

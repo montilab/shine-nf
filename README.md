@@ -32,13 +32,13 @@ computing architectures.
 
 # Quick Start
 
-In genomics data often has a hierarchical structure, image we want to
-learn networks within a hierarchical structure. For example, ABC needs
-to be learned first before AB. Once AB is finished, A and B can be
-computed in parallel etc. If we needed to do this repetitively for the
-same data and structure, we might define a workflow. But what if we want
-to apply the same method to a dataset with a different structure? We
-would want to make defining these workflows to highly efficient.
+Genomics data often has a hierarchical structure, image we want to learn
+networks within a hierarchical structure. For example, ABC needs to be
+learned first before AB. Once AB is finished, A and B can be computed in
+parallel etc. If we needed to do this repetitively for the same data and
+structure, we might define a workflow. But what if we want to apply the
+same method to a dataset with a different structure? We would want to
+make defining these workflows to highly efficient.
 
 ``` 
     ABC
@@ -112,6 +112,15 @@ $ nextflow run wf.nf -with-docker montilab/shine
         └── /network.adj.rds
 
 # Learning Methods
+
+When learning networks we can arrange modular workflows based on the
+hierarchical structure of the data.
+
+<div style="text-align:center">
+
+<img src="media/workflows.png"/>
+
+</div>
 
 ## Single Unconstrained Network
 
@@ -331,19 +340,7 @@ for node in gnf.traverse_tree(tree):
 
 # Alternative Dependency Options
 
-**R Packages**  
-We suggest R \>= 3.6.0 and workflows will expect the following R
-dependencies to be available.
-
-``` r
-library(BDgraph)
-library(Biobase)
-library(Matrix)
-library(magrittr)
-library(optparse)
-```
-
-**Conda**  
+**Conda Environment**  
 You can alternatively run workflows with a conda environment activated.
 
     conda create -n shine python=3.7
@@ -355,3 +352,15 @@ You can alternatively run workflows with a conda environment activated.
     conda install -c conda-forge r-matrix -y
     conda install -c conda-forge r-magrittr -y
     conda install -c bioconda bioconductor-biobase -y
+
+**R Packages**  
+We suggest R \>= 3.6.0 and workflows will expect the following R
+dependencies to be available.
+
+``` r
+library(BDgraph)
+library(Biobase)
+library(Matrix)
+library(magrittr)
+library(optparse)
+```

@@ -17,11 +17,11 @@ knitr::opts_chunk$set(message=FALSE, warning=FALSE, comment="#>")
 [![run with conda](http://img.shields.io/badge/run%20with-conda-3EB049?labelColor=000000&logo=anaconda)](https://docs.conda.io/en/latest/)
 [![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://www.docker.com/)
 
-This is a collection of Nextflow modules (DSL2) for modeling hierarchical biological regulatory networks. It wraps methods developed in the [shine](https://github.com/montilab/shine) R package in Nextflow modules for building hierarchical workflows. Structure learning is computationally expensive, particularly when learning multiple networks in a dependent fashion. Many computation-intensive workflows for genomics data have adopted the Nextflow framework. Nextflow is a language for building and deploying reactive workflows. It's convenient because it integrates seamlessly with software containers and abstracts away the parallelization of processes on commonly used high performance computing architectures.
+This is a collection of Nextflow modules (DSL2) for modeling hierarchical biological regulatory networks. It wraps methods developed in the [shine](https://github.com/montilab/shine) R package in Nextflow modules for building hierarchical workflows. Structure learning is computationally expensive, particularly when learning multiple networks in a dependent fashion. Many computation-intensive workflows for genomics data have adopted the Nextflow framework. Nextflow is a language for building and deploying reactive workflows. It's convenient because it integrates seamlessly with software containers and abstracts away the parallelization of processes on commonly used high performance computing architectures. 
 
 # Quick Start
 
-In genomics data often has a hierarchical structure, image we want to learn networks within a hierarchical structure. For example, ABC needs to be learned first before AB. Once AB is finished, A and B can be computed in parallel etc. If we needed to do this repetitively for the same data and structure, we might define a workflow. But what if we want to apply the same method to a dataset with a different structure? We would want to make defining these workflows to highly efficient.
+Genomics data often has a hierarchical structure, image we want to learn networks within a hierarchical structure. For example, ABC needs to be learned first before AB. Once AB is finished, A and B can be computed in parallel etc. If we needed to do this repetitively for the same data and structure, we might define a workflow. But what if we want to apply the same method to a dataset with a different structure? We would want to make defining these workflows to highly efficient.
 
 ```
     ABC
@@ -93,6 +93,10 @@ Succeeded   : 51
 ```
 
 # Learning Methods
+
+When learning networks we can arrange modular workflows based on the hierarchical structure of the data.
+
+<div style="text-align:center"><img src="media/workflows.png"/></div>
 
 ## Single Unconstrained Network
 
@@ -278,18 +282,7 @@ for node in gnf.traverse_tree(tree):
 
 # Alternative Dependency Options
 
-**R Packages**  
-We suggest R >= 3.6.0 and workflows will expect the following R dependencies to be available.
-
-```R
-library(BDgraph)
-library(Biobase)
-library(Matrix)
-library(magrittr)
-library(optparse)
-```
-
-**Conda**  
+**Conda Environment**  
 You can alternatively run workflows with a conda environment activated.
 
 ```
@@ -302,4 +295,15 @@ conda install -c conda-forge r-optparse -y
 conda install -c conda-forge r-matrix -y
 conda install -c conda-forge r-magrittr -y
 conda install -c bioconda bioconductor-biobase -y
+```
+
+**R Packages**  
+We suggest R >= 3.6.0 and workflows will expect the following R dependencies to be available.
+
+```R
+library(BDgraph)
+library(Biobase)
+library(Matrix)
+library(magrittr)
+library(optparse)
 ```
