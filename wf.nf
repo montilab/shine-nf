@@ -3,8 +3,8 @@ VERSION="1.0"
 nextflow.enable.dsl=2
 
 // Workflow parameters
-params.indir  = "/Users/anthonyfederico/GitHub/shine-nf/data"
-params.outdir = "/Users/anthonyfederico/GitHub/shine-nf/results"
+params.indir  = "./data"
+params.outdir = "./results"
 
 // Learning parameters
 params.bdg_mode = "bdgraph.mpl"
